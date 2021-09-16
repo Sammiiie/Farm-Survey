@@ -409,6 +409,22 @@ function sumRecordsWhere($sum, $table, $condition)
     $result = $stmt->get_result()->fetch_assoc();
     return $result["SUM($sum)"];
 }
+function sumRecordsWhere2($sum, $table, $condition)
+{
+    global $connection;
+    $sql = "SELECT SUM($sum) FROM $table WHERE Name_of_State = '$condition'";
+    $stmt = executeQuery($sql);
+    $result = $stmt->get_result()->fetch_assoc();
+    return $result["SUM($sum)"];
+}
+function countRecordsWhere($sum, $table, $condition)
+{
+    global $connection;
+    $sql = "SELECT COUNT($sum) FROM $table WHERE State = '$condition'";
+    $stmt = executeQuery($sql);
+    $result = $stmt->get_result()->fetch_assoc();
+    return $result["COUNT($sum)"];
+}
 
 /**
  * @param $table1

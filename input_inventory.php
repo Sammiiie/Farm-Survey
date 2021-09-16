@@ -19,7 +19,13 @@ include('header.php');
                         <h6 class="m-0 font-weight-bold text-primary">Input Inventory Report</h6>
                     </div>
                     <div style="float: right;">
-                        <b>Total: <span id="total"></span></b>
+                        <b>Total: <span id="total"></span></b> || 
+                        <a href="#" class="btn btn-info btn-icon-split export" data-export-type="excel">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-download fa-sm text-white-50"></i>
+                            </span>
+                            <span class="text">Export EXCEL</span>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -28,6 +34,17 @@ include('header.php');
 
                             <thead>
                                 <tr>
+                                    <th>State</th>
+                                    <th>Enumurator</th>
+                                    <th>Phone</th>
+                                    <th>Type of Input</th>
+                                    <th>Number of Inputs(KG)</th>
+                                    <th>Location of Warehouse</th>
+                                    <th>Warehouse Manager</th>
+                                    <th>Contact Warehouse Manager</th>
+                                    <th>Input Images</th>
+                                </tr>
+                                <tr id="filterrow">
                                     <th>State</th>
                                     <th>Enumurator</th>
                                     <th>Phone</th>
@@ -87,11 +104,14 @@ include('header.php');
 
 <script>
     $(document).ready(function() {
-        // var sum;
-        // var table = $('#dataTable').DataTable();
-        // sum = table.column(6).data().sum();
-        // console_log(sum);
-        $('#dataTable').DataTable({
+        $('#dataTable thead tr#filterrow th').each(function() {
+            var title = $('#dataTable thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" onclick="stopPropagation(event);" placeholder="Search ' + title + '" />');
+        });
+
+        // DataTable
+        var table = $('#dataTable').DataTable({
+            orderCellsTop: true,
             "footerCallback": function(row, data, start, end, display) {
                 var api = this.api(),
                     data;
@@ -140,15 +160,40 @@ include('header.php');
 
                 // Update footer
                 $(api.column(4).footer()).html(
-                    'KG ' + pageTotal.toFixed(2) + ' ( KG ' + total.toFixed(2) + ' total)'
+                    'Inputs Received (KG) ' + pageTotal.toFixed(2) + ' ( Inputs Received (KG) ' + total.toFixed(2) + ' total)'
                 );
                 // Update Header
-                var answer = 'KG ' + pageTotal.toFixed(2) + ' ( KG ' + total.toFixed(2) + ' total)';
+                var answer = 'Inputs Received (KG) ' + pageTotal.toFixed(2) + ' ( Inputs Received (KG) ' + total.toFixed(2) + ' total)';
                 $('#total').html(answer);
                 // let isNaN = (maybeNaN) => maybeNaN != maybeNaN;
                 // console.log(isNaN(pageTotal));
                 // console.log(intVal);
             }
+
+        });
+
+        // Apply the filter
+        $("#dataTable thead input").on('keyup change', function() {
+            table
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+
+        function stopPropagation(evt) {
+            if (evt.stopPropagation !== undefined) {
+                evt.stopPropagation();
+            } else {
+                evt.cancelBubble = true;
+            }
+        }
+        $(".export").click(function() {
+            var export_type = $(this).data('export-type');
+            $('#dataTable').tableExport({
+                type: export_type,
+                escape: 'false',
+                ignoreColumn: []
+            });
         });
 
     });

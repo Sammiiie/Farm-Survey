@@ -58,6 +58,8 @@
 
 <!-- Page level custom scripts -->
 <script src="js/demo/datatables-demo.js"></script>
+<script src="tableExport/tableExport.js"></script>
+<script type="text/javascript" src="tableExport/jquery.base64.js"></script>
 <!-- <script src="js/demo/chart-area-demo.js"></script> -->
 <!-- <script src="js/demo/chart-bar-demo.js"></script> -->
 <!-- <script src="js/demo/chart-pie-demo.js"></script> -->

@@ -23,7 +23,7 @@ $findRights = selectOne('designation', ['id' => $designation]);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Farm Survey</title>
+    <title>Anchor Neddle</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -105,10 +105,10 @@ $findRights = selectOne('designation', ['id' => $designation]);
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <!-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Farm Survey</div>
+                </div> -->
+                <div class="sidebar-brand-text mx-3">Anchor Neddle</div>
             </a>
 
             <!-- Divider -->
@@ -415,7 +415,7 @@ $findRights = selectOne('designation', ['id' => $designation]);
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="profile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
