@@ -806,8 +806,9 @@ include('header.php');
                     <!-- <div class="chart-area"> -->
                     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
                     <!-- MAP -->
-                    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPrkS4dgB9aLB0rRB-V3StNCwrY9k-p3g&callback=initMap&libraries=&v=weekly" defer></script> -->
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs3ZgNgivnZz7TmyCBlW-2B09mHGKrO_g&callback=initMap" async></script>
+                    <!-- insert your API KEY here -->
+                    <!-- replace 12345019 with your API key -->
+                    <script src="https://maps.googleapis.com/maps/api/js?key=12345019&callback=initMap" async></script>
                     <div id="mapCanvas"></div>
                     <!-- </div> -->
 
