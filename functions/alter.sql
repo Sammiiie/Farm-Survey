@@ -600,3 +600,8 @@ ALTER TABLE `states` CHANGE `simple_name` `simple_name` VARCHAR(100) CHARACTER S
 UPDATE `states` SET simple_name = REPLACE(simple_name, 'State', '');
 
 ALTER TABLE `input_cluster` CHANGE `Latitude` `Latitude` DECIMAL NULL DEFAULT NULL, CHANGE `Longitude` `Longitude` DECIMAL NULL DEFAULT NULL;
+
+ALTER TABLE `input_cluster` ADD `status` VARCHAR(13) NOT NULL DEFAULT 'NOT VERIFIED' AFTER `which_section_of_MAAN_is_this`;
+ALTER TABLE `input_distrubution` ADD `status` VARCHAR(13) NOT NULL DEFAULT 'NOT VERIFIED' AFTER `Please_upload_any_images_from_the_distribution`;
+ALTER TABLE `input_inventory` DROP `FIELD35`;
+ALTER TABLE `input_inventory` ADD `status` VARCHAR(13) NOT NULL DEFAULT 'NOT VERIFIED' AFTER `Please_upload_any_images_from_the_distribution`;
